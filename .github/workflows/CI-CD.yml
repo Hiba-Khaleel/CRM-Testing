@@ -1,0 +1,38 @@
+
+name: CI/CD Test
+ 
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+ 
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+ 
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+ 
+      # Step 2: Debug - List all files and folders to verify the structure
+      - name: List All Files and Folders (Debug)
+        run: ls -R
+ 
+      # Step 3: Setup .NET environment
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+ 
+      # Step 4: Restore project dependencies
+      - name: Restore
+        run: dotnet restore CRMTesting // file name
+ 
+      # Step 5: Build the project
+      - name: Build
+        run: dotnet build CRMTesting
+ 
+      # Step 6: Run tests
+      - name: Test
+        run: dotnet test CRMTesting --logger trx
