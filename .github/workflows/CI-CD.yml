@@ -27,7 +27,7 @@ jobs:
  
       # Step 4: Restore project dependencies
       - name: Restore
-        run: dotnet restore CRMTesting // file name
+        run: dotnet restore CRMTest // file name
  
       # Step 5: Build the project
       - name: Build
