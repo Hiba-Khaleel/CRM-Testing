@@ -16,13 +16,13 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: '9.0.x' # Make sure this matches your project
+        dotnet-version: '8.0.x' # Make sure this matches your project
 
     - name: Install Playwright Browsers
       run: |
         cd CRMTest
         dotnet build
-        pwsh bin/Debug/net9.0/playwright.ps1 install
+        pwsh bin/Debug/net8.0/playwright.ps1 install
 
     - name: Install frontend dependencies
       run: |
