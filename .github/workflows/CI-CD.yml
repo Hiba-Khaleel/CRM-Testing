@@ -36,19 +36,18 @@ jobs:
         #Step 6: Install Playwright Browsers
       - name: Install Playwright Browsers
         run: pwsh CRMTest/bin/Debug/net9.0/playwright.ps1 install 
-
-        # Step 7: Install Frontend
+        # Step 7: Install Frontend Dependencies
       - name: Install frontend dependencies
         run: |
-         cd crm-site
-         npm install
-         
-        # Step 8: Install Frontend
+          cd CRM-Testing/crm-site
+          npm install
+          
+      # Step 8: Start frontend
       - name: Start frontend
         run: |
-         cd crm-site
-         npm run dev &
-         sleep 5 # ⏳ wait for frontend to be ready
+          cd CRM-Testing/crm-site
+          npm run dev &
+          sleep 5 # ⏳ wait for frontend to be ready
         shell: bash
 
       # Step 8: Run tests
