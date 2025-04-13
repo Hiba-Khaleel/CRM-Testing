@@ -39,13 +39,13 @@ jobs:
         # Step 7: Install Frontend Dependencies
       - name: Install frontend dependencies
         run: |
-          cd CRM-Testing/crm-site
+          cd CRM-Testing/crm-site/client
           npm install
           
       # Step 8: Start frontend
       - name: Start frontend
         run: |
-          cd CRM-Testing/crm-site
+          cd CRM-Testing/crm-site/client
           npm run dev &
           sleep 5 # ⏳ wait for frontend to be ready
         shell: bash
