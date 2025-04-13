@@ -35,8 +35,7 @@ jobs:
 
         # ✅ Step 6: Install Playwright Browsers
       - name: Install Playwright Browsers
-        run: dotnet playwright install
- 
+        run: pwsh CRMTest/bin/Debug/net9.0/playwright.ps1 install 
       # Step 7: Run tests
       - name: Test
         run: dotnet test CRMTest --logger trx
