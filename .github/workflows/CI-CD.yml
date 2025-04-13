@@ -31,7 +31,7 @@ jobs:
  
       # Step 5: Build the project
       - name: Build
-        run: dotnet build CRMTesting
+        run: dotnet build CRM-Testing
  
       # Step 6: Run tests
       - name: Test
