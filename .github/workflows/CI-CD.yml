@@ -32,7 +32,11 @@ jobs:
       # Step 5: Build the project
       - name: Build
         run: dotnet build CRMTest
+
+        # ✅ Step 6: Install Playwright Browsers
+      - name: Install Playwright Browsers
+        run: dotnet playwright install
  
-      # Step 6: Run tests
+      # Step 7: Run tests
       - name: Test
         run: dotnet test CRMTest --logger trx
