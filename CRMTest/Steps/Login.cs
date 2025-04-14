@@ -43,12 +43,14 @@ public class Login
     public async Task GivenIAmOnCRMHomepage()
     {
         await _page.GotoAsync("http://localhost:5173");
+        await _page.WaitForLoadStateAsync(LoadState.NetworkIdle); 
     }
     [Given(@"I see the login button")]
     public async Task GivenISeeTheLoginButton()
     {
         //await _page.WaitForTimeoutAsync(3000);
         // await _page.WaitForSelectorAsync("[data-testid='consent-banner']");
+        await _page.WaitForSelectorAsync("*:has-text('Login')"); 
         var el = await _page.QuerySelectorAsync("*:has-text('Login')");
         Assert.NotNull(el);
     }
@@ -57,18 +59,21 @@ public class Login
     public async Task WhenIClickOnLoginButton()
     {
         await _page.ClickAsync("*:has-text('Login')");
+        await _page.WaitForLoadStateAsync(LoadState.DOMContentLoaded); // Wait after click
     }
 
     [Given(@"I be navigated to the login page")]
     public async Task WhenIBeNavigatedToTheLoginPage()
     {
         await _page.GotoAsync("http://localhost:5173/login");
+        await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
 
     }
     
     [Given(@"I see The login form")]
     public async Task WhenISeeTheLoginForm()
     {
+        await _page.WaitForSelectorAsync("*:has-text('Login form')");
         var el = await _page.QuerySelectorAsync("*:has-text('Login form')");
         Assert.NotNull(el);
     }
@@ -88,12 +93,13 @@ public class Login
     [Then(@"I should be logged in")]
     public async Task ThenIShouldBeLoggedIn()
     {
+        await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
         await _page.GotoAsync("http://localhost:5173");
 
-        // var el = await _page.QuerySelectorAsync("*:has-text('Logut')");
+        // var el = await _page.QuerySelectorAsync("*:has-text('Logout')");
         // Assert.NotNull(el);
 
-        // Wait a bit so you can see the result
+        // Wait briefly before finishing test
         await _page.WaitForTimeoutAsync(3000);
     }
 
