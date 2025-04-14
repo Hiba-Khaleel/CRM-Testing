@@ -18,11 +18,35 @@ jobs:
       with:
         dotnet-version: '9.0.x' 
 
+    - name: Install Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'  # Or your project's version
+
+    - name: Install frontend dependencies and build
+      run: |
+        cd crm-site/client
+        npm ci
+        npm run build
+
+    - name: Build backend
+      run: |
+        cd crm-site/server
+        dotnet build
+
+    - name: Start backend server
+      run: |
+        cd crm-site/server
+        dotnet run &
+        sleep 5  # Give backend time to boot up
+
     - name: Install Playwright Browsers
       run: |
         cd CRMTest
         dotnet build
         pwsh bin/Debug/net9.0/playwright.ps1 install
 
-    - name: Run Tests
-      run: dotnet test CRMTest --logger trx
+    - name: Run Playwright tests
+      run: |
+        cd CRMTest
+        dotnet test --logger trx
