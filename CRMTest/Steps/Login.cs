@@ -17,15 +17,7 @@ public class Login
     public async Task Setup()
     {
         _playwright = await Playwright.CreateAsync();
-
-        bool isCi = Environment.GetEnvironmentVariable("CI") == "true";
-
-        _browser = await _playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
-        {
-            Headless = isCi,
-            SlowMo = isCi ? 0 : 300
-        });
-
+        _browser = await _playwright.Chromium.LaunchAsync(new() { Headless = false, SlowMo = 0 });
         _context = await _browser.NewContextAsync();
         _page = await _context.NewPageAsync();
     }
