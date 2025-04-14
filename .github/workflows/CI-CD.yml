@@ -24,15 +24,5 @@ jobs:
         dotnet build
         pwsh bin/Debug/net8.0/playwright.ps1 install
 
-    - name: Install frontend dependencies
-      run: |
-        npm install
-
-    - name: Start frontend
-      run: |
-        npm run dev &
-        sleep 5 # ⏳ wait for frontend to be ready
-      shell: bash
-
     - name: Run Tests
       run: dotnet test CRMTest --logger trx
