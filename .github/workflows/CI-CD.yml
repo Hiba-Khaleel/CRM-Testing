@@ -22,7 +22,7 @@ jobs:
       run: |
         cd CRMTest
         dotnet build
-        pwsh bin/Debug/net8.0/playwright.ps1 install
+        pwsh bin/Debug/net9.0/playwright.ps1 install
 
     - name: Run Tests
       run: dotnet test CRMTest --logger trx
