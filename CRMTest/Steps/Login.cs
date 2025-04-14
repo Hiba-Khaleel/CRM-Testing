@@ -93,11 +93,8 @@ public class Login
     [Then(@"I should be logged and click Logout button to return to homePage")]
     public async Task ThenIShouldBeLoggedIn()
     {
-        // Wait for logout button to appear
         await _page.WaitForSelectorAsync("*:has-text('Logout')");
-            // , new() { Timeout = 5000 });
 
-        // Get the logout button and ensure it exists before clicking
         var logoutButton = await _page.QuerySelectorAsync("*:has-text('Logout')");
         Assert.NotNull(logoutButton);
         await logoutButton.ClickAsync();
