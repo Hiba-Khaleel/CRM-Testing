@@ -42,7 +42,7 @@ public class Login
     [Given(@"I am on the CRM homepage")]
     public async Task GivenIAmOnCRMHomepage()
     {
-        await _page.GotoAsync("http://localhost:5173");
+        await _page.GotoAsync("http://localhost:3000");
         await _page.WaitForLoadStateAsync(LoadState.NetworkIdle); 
     }
     [Given(@"I see the login button")]
@@ -65,7 +65,7 @@ public class Login
     [Given(@"I be navigated to the login page")]
     public async Task WhenIBeNavigatedToTheLoginPage()
     {
-        await _page.GotoAsync("http://localhost:5173/login");
+        await _page.GotoAsync("http://localhost:3000/login");
         await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
 
     }
@@ -94,7 +94,7 @@ public class Login
     public async Task ThenIShouldBeLoggedIn()
     {
         await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
-        await _page.GotoAsync("http://localhost:5173");
+        await _page.GotoAsync("http://localhost:3000");
 
         // var el = await _page.QuerySelectorAsync("*:has-text('Logout')");
         // Assert.NotNull(el);
