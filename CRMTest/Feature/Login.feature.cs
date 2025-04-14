@@ -19,7 +19,7 @@ namespace CRMTest.Feature
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "4.0.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public partial class LoginPageFeature : object, Xunit.IClassFixture<LoginPageFeature.FixtureData>, Xunit.IAsyncLifetime
+    public partial class LoginPageLogoutFeature : object, Xunit.IClassFixture<LoginPageLogoutFeature.FixtureData>, Xunit.IAsyncLifetime
     {
         
         private static TechTalk.SpecFlow.ITestRunner testRunner;
@@ -31,7 +31,7 @@ namespace CRMTest.Feature
 #line 1 "Login.feature"
 #line hidden
         
-        public LoginPageFeature(LoginPageFeature.FixtureData fixtureData, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
+        public LoginPageLogoutFeature(LoginPageLogoutFeature.FixtureData fixtureData, Xunit.Abstractions.ITestOutputHelper testOutputHelper)
         {
             this._testOutputHelper = testOutputHelper;
         }
@@ -39,7 +39,7 @@ namespace CRMTest.Feature
         public static async System.Threading.Tasks.Task FeatureSetupAsync()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunnerForAssembly(null, TechTalk.SpecFlow.xUnit.SpecFlowPlugin.XUnitParallelWorkerTracker.Instance.GetWorkerId());
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Feature", "Login page", "Login to the CRM website", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Feature", "Login page & Logout", "Login to the CRM website and Logout ", ProgrammingLanguage.CSharp, featureTags);
             await testRunner.OnFeatureStartAsync(featureInfo);
         }
         
@@ -86,19 +86,19 @@ namespace CRMTest.Feature
             await this.TestTearDownAsync();
         }
         
-        [Xunit.SkippableTheoryAttribute(DisplayName="Navigate to the login page and login")]
-        [Xunit.TraitAttribute("FeatureTitle", "Login page")]
-        [Xunit.TraitAttribute("Description", "Navigate to the login page and login")]
+        [Xunit.SkippableTheoryAttribute(DisplayName="Navigate to the login page and login and then Logout")]
+        [Xunit.TraitAttribute("FeatureTitle", "Login page & Logout")]
+        [Xunit.TraitAttribute("Description", "Navigate to the login page and login and then Logout")]
         [Xunit.InlineDataAttribute("m@email.com", "abc123", new string[0])]
         [Xunit.InlineDataAttribute("no@email.com", "abc123", new string[0])]
-        [Xunit.InlineDataAttribute("test@email.com", "abc123", new string[0])]
-        public async System.Threading.Tasks.Task NavigateToTheLoginPageAndLogin(string email, string password, string[] exampleTags)
+        [Xunit.InlineDataAttribute("test@gmail.com", "abc123", new string[0])]
+        public async System.Threading.Tasks.Task NavigateToTheLoginPageAndLoginAndThenLogout(string email, string password, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("email", email);
             argumentsOfScenario.Add("password", password);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Navigate to the login page and login", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Navigate to the login page and login and then Logout", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 5
     this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -131,7 +131,7 @@ namespace CRMTest.Feature
         await testRunner.WhenAsync("I click the login form submit button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 13
-        await testRunner.ThenAsync("I should be logged in", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+        await testRunner.ThenAsync("I should be logged and click Logout button to return to homePage", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             await this.ScenarioCleanupAsync();
@@ -144,12 +144,12 @@ namespace CRMTest.Feature
             
             async System.Threading.Tasks.Task Xunit.IAsyncLifetime.InitializeAsync()
             {
-                await LoginPageFeature.FeatureSetupAsync();
+                await LoginPageLogoutFeature.FeatureSetupAsync();
             }
             
             async System.Threading.Tasks.Task Xunit.IAsyncLifetime.DisposeAsync()
             {
-                await LoginPageFeature.FeatureTearDownAsync();
+                await LoginPageLogoutFeature.FeatureTearDownAsync();
             }
         }
     }

@@ -23,7 +23,7 @@ public class Login
         _browser = await _playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
         {
             Headless = isCi,
-            SlowMo = isCi ? 0 : 300
+            SlowMo = isCi ? 0 : 500
         });
 
         _context = await _browser.NewContextAsync();
@@ -82,25 +82,26 @@ public class Login
     {
         await _page.FillAsync("input[name='email']", email);
         await _page.FillAsync("input[name='password']", password);
-        // await _page.FillAsync("input[name='confirmPassword']", password);
     }
 
     [When(@"I click the login form submit button")]
     public async Task WhenIClickTheLoginFormSubmitButton()
     {
-        await _page.ClickAsync("*:has-text('Login')");
+        await _page.ClickAsync("[type='submit']");
     }
-    [Then(@"I should be logged in")]
+
+    [Then(@"I should be logged and click Logout button to return to homePage")]
     public async Task ThenIShouldBeLoggedIn()
     {
-        await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
-        await _page.GotoAsync("http://localhost:3000");
+        // Wait for logout button to appear
+        await _page.WaitForSelectorAsync("*:has-text('Logout')");
+            // , new() { Timeout = 5000 });
 
-        // var el = await _page.QuerySelectorAsync("*:has-text('Logout')");
-        // Assert.NotNull(el);
-
-        // Wait briefly before finishing test
-        await _page.WaitForTimeoutAsync(3000);
+        // Get the logout button and ensure it exists before clicking
+        var logoutButton = await _page.QuerySelectorAsync("*:has-text('Logout')");
+        Assert.NotNull(logoutButton);
+        await logoutButton.ClickAsync();
     }
+
 
 }
