@@ -8,5 +8,10 @@ export default defineConfig({
     proxy: {
       "/api": "http://localhost:3000"
     }
-  }
+  },
+  
+build: {
+  outDir: '../server/wwwroot',
+      emptyOutDir: true,
+}
 })

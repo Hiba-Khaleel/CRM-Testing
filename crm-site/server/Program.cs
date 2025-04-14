@@ -14,6 +14,8 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
+
+
 Database database = new Database();
 NpgsqlDataSource db = database.Connection();
 
@@ -31,6 +33,10 @@ builder.Services.AddScoped<IEmailService, EmailService>();
 var app = builder.Build();
 
 app.UseSession();
+
+app.UseDefaultFiles();       // serves index.html by default
+app.UseStaticFiles();        // allows access to JS, CSS, images
+app.MapFallbackToFile("index.html"); // handles SPA routing
 
 String url = "/api";
 
