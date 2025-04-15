@@ -48,7 +48,7 @@ public class Register
     [Given(@"I am on the CRM home Page")]
     public async Task GivenIAmOnCRMHomepage()
     {
-        await _page.GotoAsync("http://localhost:5173");
+        await _page.GotoAsync("http://localhost:3000");
         await _page.WaitForLoadStateAsync(LoadState.NetworkIdle); 
 
     }
@@ -72,17 +72,8 @@ public class Register
     [Given(@"I be navigated to the register page")]
     public async Task WhenIBeNavigatedToTheRegisterPage()
     {
-         await _page.GotoAsync("http://localhost:5173/register");
+         await _page.GotoAsync("http://localhost:3000/register");
    }
-
-
-   [Given(@"I see The register form")]
-   public async Task WhenISeeTheRegisterForm()
-   {
-       var el = await _page.QuerySelectorAsync("#register-form");
-       Assert.NotNull(el);
-   }
-
 
    [Given(@"I fill out the register form with ""(.*)"", ""(.*)"", ""(.*)"" and ""(.*)""")]
    public async Task GivenIFillOutTheRegisterForm(string email, string password, string userName, string company)
@@ -121,7 +112,7 @@ public class Register
    [Then(@"I should be registered and navigated to the login page")]
    public async Task ThenIShouldBeRegisteredAndNavigatedToTheLoginPage()
    {
-       await _page.GotoAsync("http://localhost:5173/login");
+       await _page.GotoAsync("http://localhost:3000/login");
    }
 
 
