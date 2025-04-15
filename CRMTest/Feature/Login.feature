@@ -16,5 +16,4 @@ Login to the CRM website and Logout
         Examples:
           | email          | password |
           | m@email.com    | abc123   |
-          | no@email.com   | abc123   |
-          | test@gmail.com | abc123   |
+         
