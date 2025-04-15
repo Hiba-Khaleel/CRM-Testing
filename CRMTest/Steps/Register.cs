@@ -49,6 +49,8 @@ public class Register
     public async Task GivenIAmOnCRMHomepage()
     {
         await _page.GotoAsync("http://localhost:5173");
+        await _page.WaitForLoadStateAsync(LoadState.NetworkIdle); 
+
     }
 
 
