@@ -89,8 +89,8 @@ namespace CRMTest.Feature
         [Xunit.SkippableTheoryAttribute(DisplayName="Login and create an issue")]
         [Xunit.TraitAttribute("FeatureTitle", "Create Issue")]
         [Xunit.TraitAttribute("Description", "Login and create an issue")]
-        [Xunit.InlineDataAttribute("m@email.com", "abc123", "hb.khaleel@gmail.com", "issue with delivering", "skada", "this is my test message", new string[0])]
-        public async System.Threading.Tasks.Task LoginAndCreateAnIssue(string email, string password, string senderEmail, string title, string subject, string message, string[] exampleTags)
+        [Xunit.InlineDataAttribute("m@email.com", "abc123", "hb.khaleel@gmail.com", "issue with delivering", "this is my test message", new string[0])]
+        public async System.Threading.Tasks.Task LoginAndCreateAnIssue(string email, string password, string senderEmail, string title, string message, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
@@ -98,7 +98,6 @@ namespace CRMTest.Feature
             argumentsOfScenario.Add("password", password);
             argumentsOfScenario.Add("senderEmail", senderEmail);
             argumentsOfScenario.Add("title", title);
-            argumentsOfScenario.Add("subject", subject);
             argumentsOfScenario.Add("message", message);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Login and create an issue", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 4

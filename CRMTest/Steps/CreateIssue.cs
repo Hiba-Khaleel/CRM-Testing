@@ -49,7 +49,7 @@ public class CreateIssue
         await _page.ClickAsync("*:has-text('Login')");
         // await _page.WaitForLoadStateAsync(LoadState.DOMContentLoaded);
         await _page.GotoAsync("http://localhost:3000/login");
-        await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
+        // await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
 
 
         await _page.WaitForSelectorAsync("form");
