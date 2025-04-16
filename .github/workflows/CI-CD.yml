@@ -64,6 +64,6 @@ jobs:
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
           script: |
-            cd /srv/www/malmo/hiba/CRM-Testing || git clone git@github.com:Hiba-Khaleel/CRM-Testing.git
+            cd `/srv/www/malmo/hiba/CRM-Testing` || git clone git@github.com:Hiba-Khaleel/CRM-Testing.git
             cd CRM-Testing
             git pull
