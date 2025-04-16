@@ -10,5 +10,5 @@ Create Issue after user is logged in
         When I click create issue button 
 
         Examples:
-          | email       | password | senderEmail | title                 | subject | message                 |
-          | m@email.com | abc123   | hb.khaleel@gmail.com | issue with delivering | skada   | this is my test message |
+          | email       | password | senderEmail | title                  | message                 |
+          | m@email.com | abc123   | hb.khaleel@gmail.com | issue with delivering  | this is my test message |
