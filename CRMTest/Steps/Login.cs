@@ -23,7 +23,7 @@ public class Login
         _browser = await _playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
         {
             Headless = isCi,
-            SlowMo = isCi ? 0 : 500
+            SlowMo = isCi ? 0 : 1000
         });
 
         _context = await _browser.NewContextAsync();
@@ -98,6 +98,8 @@ public class Login
         var logoutButton = await _page.QuerySelectorAsync("*:has-text('Logout')");
         Assert.NotNull(logoutButton);
         await logoutButton.ClickAsync();
+        await _page.GotoAsync("http://localhost:3000");
+        await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
     }
 
 

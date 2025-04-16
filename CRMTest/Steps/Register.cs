@@ -53,22 +53,19 @@ public class Register
 
     }
 
-
     [Given(@"I see the register button")]
     public async Task GivenISeeTheRegisterButton()
     {
         var el = await _page.QuerySelectorAsync("*:has-text('Register')");
         Assert.NotNull(el);
     }
-
-
+    
     [Given(@"I click on register button")]
     public async Task WhenIClickOnRegisterButton()
     {
         await _page.ClickAsync("*:has-text('Register')");
     }
-
-
+    
     [Given(@"I be navigated to the register page")]
     public async Task WhenIBeNavigatedToTheRegisterPage()
     {
@@ -102,17 +99,17 @@ public class Register
            
            Assert.Contains("Du har lyckats registrera dig!", alertMessage);
            await dialog.AcceptAsync();
-           
-           // await _page.WaitForURLAsync("http://localhost:5173/login");
        };
-
 
        await _page.ClickAsync("*:has-text('Skapa konto')");
    }
+   
    [Then(@"I should be registered and navigated to the login page")]
    public async Task ThenIShouldBeRegisteredAndNavigatedToTheLoginPage()
    {
-       await _page.GotoAsync("http://localhost:3000/login");
+       await _page.GotoAsync("http://localhost:3000");
+       await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
+
    }
 
 

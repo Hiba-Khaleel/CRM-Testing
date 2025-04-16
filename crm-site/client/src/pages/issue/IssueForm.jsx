@@ -51,7 +51,7 @@ export default function IssueForm() {
         :
         <div >
             <h1>{formInfo.companyName} issue form.</h1>
-            <form action={createIssue}>
+            <form action={createIssue} id="issue-form">
                 <label>
                     Your email
                     <input type="email" name="email" required />
@@ -62,7 +62,7 @@ export default function IssueForm() {
                 </label>
                 <label>
                     Subject
-                    <select defaultValue={formInfo.subjects[0]} onChange={e => setSubject(e.target.value)}>
+                    <select name="subject" defaultValue={formInfo.subjects[0]} onChange={e => setSubject(e.target.value)}>
                         {
                             formInfo.subjects.map(subject => <option key={subject} value={subject}>{subject}</option>)
                         }
