@@ -65,6 +65,6 @@ jobs:
           port: ${{ secrets.PORT }}
           script: |
             cd /srv/www/malmo/hiba 
-            git clone git@github.com:Hiba-Khaleel/CRM-Testing.git
+            git clone https://github.com/Hiba-Khaleel/CRM-Testing.git
             cd CRM-Testing
             
