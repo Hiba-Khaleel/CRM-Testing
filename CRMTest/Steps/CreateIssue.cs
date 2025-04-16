@@ -63,8 +63,9 @@ public class CreateIssue
     [Given(@"I see the company name")]
     public async Task GivenISeeTheCompanyName()
     {
-       var companyName= await _page.QuerySelectorAsync("*:has-text('Demo AB')");
-       Assert.NotNull(companyName);
+        await _page.WaitForSelectorAsync("*:has-text('Demo AB')", new() { Timeout = 5000 });
+        var companyName = await _page.QuerySelectorAsync("*:has-text('Demo AB')");
+        Assert.NotNull(companyName);
     }    
     [Given(@"I click on the company name")]
     public async Task GivenIClickOnTheCompanyName()
