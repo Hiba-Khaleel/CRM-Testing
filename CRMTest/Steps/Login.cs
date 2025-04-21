@@ -44,7 +44,7 @@ public class Login
     public async Task GivenIAmOnCRMHomepage()
     {
         await _page.GotoAsync("http://localhost:3000");
-        await _page.WaitForLoadStateAsync(LoadState.NetworkIdle); 
+        // await _page.WaitForLoadStateAsync(LoadState.NetworkIdle); 
 
     }
     [Given(@"I see the login button")]
@@ -85,7 +85,11 @@ public class Login
     [Then(@"I should be logged and click Logout button to return to homePage")]
     public async Task ThenIShouldBeLoggedIn()
     {
-        var logoutButton = await _page.QuerySelectorAsync("button:has-text('Logout')");
+        var logoutButton = await _page.WaitForSelectorAsync("button:has-text('Logout')", new PageWaitForSelectorOptions
+        {
+            Timeout = 5000 
+        });
+
         Assert.NotNull(logoutButton);
         await logoutButton.ClickAsync();
 
