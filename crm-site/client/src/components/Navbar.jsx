@@ -41,7 +41,7 @@ export default function Navbar() {
                             :
                             null
                     }
-                    <button onClick={logout}>Logout</button>
+                    <button onClick={logout} id='logout'}>Logout</button>
                 </>
         }
     </nav>

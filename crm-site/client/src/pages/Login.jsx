@@ -29,8 +29,8 @@ export default function Login() {
 
     return <form action={login}>
         <h2>Login form</h2>
-        <input type="text" name="email" placeholder="Email" required/>
-        <input type="password" name="password" placeholder="Password" required/>
-        <button type="submit">Login</button>
+        <input type="text" id='name' name="email" placeholder="Email" required/>
+        <input type="password" id='password' name="password" placeholder="Password" required/>
+        <button type="submit" id='submit'>Login</button>
     </form>
 }

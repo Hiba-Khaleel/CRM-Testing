@@ -119,11 +119,8 @@ namespace CRMTest.Feature
 #line 9
         await testRunner.AndAsync("I be navigated to the login page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 10
-        await testRunner.AndAsync("I see The login form", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
 #line 11
-        await testRunner.AndAsync(string.Format("I fill out the login form with {0} and {1}", email, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+        await testRunner.AndAsync(string.Format("I see the login form and I fill out the login form with \"{0}\" and \"{1}\"", email, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 12
         await testRunner.WhenAsync("I click the login form submit button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

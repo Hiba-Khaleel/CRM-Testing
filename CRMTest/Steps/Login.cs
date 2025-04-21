@@ -2,6 +2,7 @@ namespace CRMTest;
 
 using Microsoft.Playwright;
 using TechTalk.SpecFlow;
+using System.Threading.Tasks;
 using Xunit;
 
 [Binding]
@@ -44,12 +45,11 @@ public class Login
     {
         await _page.GotoAsync("http://localhost:3000");
         await _page.WaitForLoadStateAsync(LoadState.NetworkIdle); 
+
     }
     [Given(@"I see the login button")]
     public async Task GivenISeeTheLoginButton()
     {
-        //await _page.WaitForTimeoutAsync(3000);
-        // await _page.WaitForSelectorAsync("[data-testid='consent-banner']");
         await _page.WaitForSelectorAsync("*:has-text('Login')"); 
         var el = await _page.QuerySelectorAsync("*:has-text('Login')");
         Assert.NotNull(el);
@@ -59,25 +59,17 @@ public class Login
     public async Task WhenIClickOnLoginButton()
     {
         await _page.ClickAsync("*:has-text('Login')");
-        await _page.WaitForLoadStateAsync(LoadState.DOMContentLoaded); // Wait after click
     }
 
     [Given(@"I be navigated to the login page")]
     public async Task WhenIBeNavigatedToTheLoginPage()
     {
         await _page.GotoAsync("http://localhost:3000/login");
-        await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
 
     }
     
-    [Given(@"I see The login form")]
-    public async Task WhenISeeTheLoginForm()
-    {
-        await _page.WaitForSelectorAsync("*:has-text('Login form')");
-        var el = await _page.QuerySelectorAsync("*:has-text('Login form')");
-        Assert.NotNull(el);
-    }
-    [Given(@"I fill out the login form with (.*) and (.*)")]
+    
+    [Given(@"I see the login form and I fill out the login form with ""(.*)"" and ""(.*)""")]
     public async Task WhenIFillOutTheFormWithAnd(string email, string password)
     {
         await _page.FillAsync("input[name='email']", email);
@@ -93,13 +85,11 @@ public class Login
     [Then(@"I should be logged and click Logout button to return to homePage")]
     public async Task ThenIShouldBeLoggedIn()
     {
-        await _page.WaitForSelectorAsync("*:has-text('Logout')");
-
-        var logoutButton = await _page.QuerySelectorAsync("*:has-text('Logout')");
+        var logoutButton = await _page.QuerySelectorAsync("button:has-text('Logout')");
         Assert.NotNull(logoutButton);
         await logoutButton.ClickAsync();
-        await _page.GotoAsync("http://localhost:3000");
-        await _page.WaitForLoadStateAsync(LoadState.NetworkIdle);
+
+       
     }
 
 

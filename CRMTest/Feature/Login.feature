@@ -7,8 +7,8 @@ Login to the CRM website and Logout
         And I see the login button
         And I click on login button
         And I be navigated to the login page
-        And I see The login form
-        And I fill out the login form with <email> and <password>
+#        And I see The login form
+        And I see the login form and I fill out the login form with "<email>" and "<password>"
         When I click the login form submit button
         Then I should be logged and click Logout button to return to homePage
 
